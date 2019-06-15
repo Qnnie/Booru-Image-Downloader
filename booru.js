@@ -60,7 +60,7 @@ const BooruDownloader = async (service, tags, searchOptions) => {
         });
     }
     
-    let requestsLimit= 5;
+    const requestsLimit= 5;
     let i = 0;
     for (const post of posts) {
         if (i % requestsLimit == 0 && i!=0) StallDownloader();
