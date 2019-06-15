@@ -44,13 +44,14 @@ yargs.command({
             nsfw: argv.R,
             random: argv.r
         }
-        yandereScrape(service, tags, searchOptions);
+        BooruDownloader(service, tags, searchOptions);
     }
 });
 
-const yandereScrape = async (service, tags, searchOptions) => {
+const BooruDownloader = async (service, tags, searchOptions) => {
     let imageFolder = `${__dirname}/${tags[0]}`;
     const posts = await Booru.search(service, tags, searchOptions); 
+
     //If Folder doesn't exist create one
     if (!fs.existsSync(imageFolder)) {
         fs.mkdir(path.join(__dirname, `/${tags[0]}`), {}, err => {
