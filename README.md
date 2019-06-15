@@ -1,6 +1,6 @@
 ## Setup
 <ul>
-  <li>Open command line or terminal</li>
+  <li>Open command line or terminal and type the following commands</li>
   <li>git clone https://github.com/Qnnie/Booru-Image-Downloader</li>
   <li>cd Booru-Image-Downloader</li>
   <li>npm install</li>
