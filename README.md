@@ -24,6 +24,6 @@ ex: node booru download -s='konachan.net' -t='chinese_dress' -n=2 -r <br>
 The request above grabs 2 random sfw images from konachan, with the tag 'chinese_dress' <br>
 
 A list of servicable websites are noted here https://github.com/AtlasTheBot/booru/blob/HEAD/src/sites.json
-## How it works
+## What it does
 
-The downloader will create a folder in this directory with the tags given.
+The downloader will create a folder in this directory with the tags given and download all the images into that folder.
