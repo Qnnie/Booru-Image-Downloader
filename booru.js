@@ -49,12 +49,12 @@ yargs.command({
 });
 
 const BooruDownloader = async (service, tags, searchOptions) => {
-    let imageFolder = `${__dirname}/${tags[0]}`;
+    const imageFolder = `${__dirname}/${tags[0]}`;
     const posts = await Booru.search(service, tags, searchOptions); 
 
     //If Folder doesn't exist create one
     if (!fs.existsSync(imageFolder)) {
-        fs.mkdir(path.join(__dirname, `/${tags[0]}`), {}, err => {
+        fs.mkdir(imageFolder, {}, err => {
             if (err) throw err;
             console.log(`${tags[0]} Folder Created\n`)
         });
@@ -65,8 +65,8 @@ const BooruDownloader = async (service, tags, searchOptions) => {
     for (const post of posts) {
         if (i % requestsLimit == 0 && i!=0) StallDownloader();
 
-        let image = ParseURLtoImage(post.fileUrl);
-        let imagePath = (`${imageFolder}/${image}`);
+        const image = ParseURLtoImage(post.fileUrl);
+        const imagePath = (`${imageFolder}/${image}`);
 
         //If File already exists dont do anything
         if (fs.existsSync(imagePath)) {
