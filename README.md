@@ -1,3 +1,10 @@
+## Setup
+<ul>
+  <li>Open command line or terminal</li>
+  <li>git clone https://github.com/Qnnie/Booru-Image-Downloader</li>
+  <li>cd Booru-Image-Downloader</li>
+</ul>
+
 ## Usage
 
 node booru download --help which should bring up 
@@ -14,3 +21,8 @@ Options: <br>
 
 ex: node booru download -s='konachan.net' -t='chinese_dress' -n=2 -r <br>
 The request above grabs 2 random sfw images from konachan, with the tag 'chinese_dress' <br>
+
+A list of servicable websites are noted here https://github.com/AtlasTheBot/booru/blob/HEAD/src/sites.json
+## How it works
+
+The downloader will create a folder in this directory with the tags given.
