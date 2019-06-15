@@ -3,6 +3,7 @@
   <li>Open command line or terminal</li>
   <li>git clone https://github.com/Qnnie/Booru-Image-Downloader</li>
   <li>cd Booru-Image-Downloader</li>
+  <li>npm install</li>
 </ul>
 
 ## Usage
