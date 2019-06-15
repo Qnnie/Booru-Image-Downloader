@@ -6,7 +6,7 @@ const Booru = require('booru');
 const tags = [process.argv[2]];
 const searchOptions = {
     limit: process.argv[3],
-    nsfw: true,
+    nsfw: false,
     random: true,
 }
 
@@ -17,14 +17,14 @@ const yandereScrape = async () => {
     if (!fs.existsSync(imageFolder)) {
         fs.mkdir(path.join(__dirname, `/${tags[0]}`), {}, err => {
             if (err) throw err;
-            console.log(`${tags[0]} Folder Created`)
+            console.log(`${tags[0]} Folder Created\n`)
         });
     }
     
     let requestsLimit= 5;
     let i = 0;
     for (const post of posts) {
-        if (i % requestsLimit == 0) StallDownloader();
+        if (i % requestsLimit == 0 && i!=0) StallDownloader();
 
         let image = ParseURLtoImage(post.fileUrl);
         let imagePath = (`${imageFolder}/${image}`);
@@ -37,12 +37,13 @@ const yandereScrape = async () => {
 
         try {
             await download.image({url: post.fileUrl, dest: imageFolder});
-            console.log(`Downloaded`);
+            console.log(`Downloaded: ${post.fileUrl}`);
         } catch (err) {
             console.error(err);
         }
         i++;
     }
+    console.log(`\nFinished Downloading`);
 }
 
 const ParseURLtoImage = fileUrl => {
@@ -53,6 +54,6 @@ const ParseURLtoImage = fileUrl => {
     }
 }
 
-const StallDownloader = () => setTimeout(() => console.log('stall'), 1000);
+const StallDownloader = () => setTimeout(() => console.log('\n'), 500);
 
 yandereScrape();
