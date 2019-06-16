@@ -4,7 +4,7 @@ const download = require('image-downloader');
 const Booru = require('booru');
 const yargs = require('yargs');
 
-yargs.version('1.0.0');
+yargs.version('1.0.1');
 
 yargs.command({
     command: 'download',
@@ -65,7 +65,7 @@ const BooruDownloader = async (service, tags, searchOptions) => {
     for (const post of posts) {
         if (i % requestsLimit == 0 && i!=0) StallDownloader();
 
-        const image = ParseURLtoImage(post.fileUrl);
+        const image = GetImageURL(post.fileUrl);
         const imagePath = (`${imageFolder}/${image}`);
 
         //If File already exists dont do anything
@@ -85,13 +85,7 @@ const BooruDownloader = async (service, tags, searchOptions) => {
     console.log(`\nFinished Downloading`);
 }
 
-const ParseURLtoImage = fileUrl => {
-    let parseAt = 5;
-    for (let i=0; i<fileUrl.length; i++) {
-        if (fileUrl[i] == '/') parseAt--;
-        if (parseAt == 0) return fileUrl.slice(i+1);
-    }
-}
+const GetImageURL = url => url.split("/").slice(5).join("/");
 
 const StallDownloader = () => setTimeout(() => console.log('\n'), 500);
 
